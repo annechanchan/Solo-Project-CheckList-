@@ -1,0 +1,56 @@
+{
+  "name": "8.2-solo-project",
+  "version": "1.0.0",
+  "description": "\"Anne's first solo project: Creating a checklist\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=production node server/server.js",
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.js\" webpack serve --open --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annechanchan/Solo-Project-CheckList-.git"
+  },
+  "keywords": [
+    "checklist",
+    "to-do list"
+  ],
+  "author": "Anne Chan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/annechanchan/Solo-Project-CheckList-/issues"
+  },
+  "homepage": "https://github.com/annechanchan/Solo-Project-CheckList-#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.8",
+    "nodemon": "^2.0.13",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "dart-sass": "^1.25.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "concurrently": "^5.0.0",
+    "cross-env": "^6.0.3",
+    "css-loader": "^1.0.1",
+    "eslint": "^7.17.0",
+    "eslint-plugin-react": "^7.21.5",
+    "file-loader": "^4.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.18.9",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "3.11.0",
+    "webpack-hot-middleware": "^2.24.3"
+  }
+}
