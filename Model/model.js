@@ -25,11 +25,11 @@ const checklistSchema = new Schema({
         unique: true
     },
     completed: {
-        type: boolean,
+        type: Boolean,
         default: false
     },
     priority: {
-        type: boolean,
+        type: Boolean,
         default: false
     },
   });
