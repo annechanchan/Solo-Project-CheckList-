@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const PORT = 3000;
-const checklistController = require('../Components/checklistController');
+const PORT = process.env.PORT || 3000;
+const checklistController = require('./checklistController');
 //const db = require('./Model/model')
 app.use(express.json()); //handle parsing request body
 app.use(express.urlencoded({ extended: false })); //handle parsing url
@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false })); //handle parsing url
 //   });
 // }
 
+//get requests from root URL
 app.get('/', (req, res) => {
   console.log('In app.get serving html file');
   return res
@@ -22,9 +23,27 @@ app.get('/', (req, res) => {
     .sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 
+//get, post request from checklist URL
 app.get('/checklist', checklistController.getChecklist, (req, res) => {
-  console.log('In server.js app.get');
-  return res.status(200).send(res.locals.allChecklists);
+  console.log('In server.js app.get', res.locals.allChecklists);
+  return res.status(200).json(res.locals.allChecklists); //may have to change this back to json
+});
+
+app.post('/checklist', checklistController.addChecklist, (req, res) => {
+  console.log('In server.js post checklist request', req.body);
+  return res.status(200).json({});
+});
+
+app.post('/task', checklistController.addTask, (req, res) => {
+  ///if they have tried to add a task, but no checklist then we need to respond back
+  console.log('In server.js post task request', req.body);
+  return res.status(200).json({});
+});
+
+app.delete('/task', checklistController.removeTask, (req, res) => {
+  ///if they have tried to add a task, but no checklist then we need to respond back
+  console.log('In server.js delete request', req.body);
+  return res.status(200).json({});
 });
 
 //Route error handler
