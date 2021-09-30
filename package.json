@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=production nodemon server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.js\" webpack serve --open --hot"
+    "dev": "cross-env NODE_ENV=development concurrently \"webpack serve --open --hot \" \" nodemon server/server.js\""
   },
   "repository": {
     "type": "git",
@@ -52,6 +52,7 @@
     "node-fetch": "^2.6.2",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "regenerator-runtime": "^0.13.9"
   }
 }

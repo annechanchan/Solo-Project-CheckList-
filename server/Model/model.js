@@ -26,7 +26,7 @@ const checklistSchema = new Schema({
     {
       task: {
         type: String,
-        required: true,
+        // required: true,
       },
       completed: {
         type: Boolean,
@@ -39,10 +39,8 @@ const checklistSchema = new Schema({
     },
   ],
 });
-
 // creates a model for the 'checklist' collection that will be part of the export
 const Checklist = mongoose.model('checklist', checklistSchema);
 //const Task = mongoose.model('task', taskSchema);
-
 //export the model
 module.exports = { Checklist };

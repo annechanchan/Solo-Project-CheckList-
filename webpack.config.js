@@ -5,8 +5,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: './client/index.js',
   output: {
-    path: path.resolve(__dirname, './build'),
     filename: 'bundle.js',
+    path: path.resolve(__dirname, './build'),
   },
   mode: process.env.Node_ENV,
 
@@ -35,17 +35,22 @@ module.exports = {
       filename: './index.html',
     }),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: "./client/style.css", to: "./" },
-      ],
+      patterns: [{ from: './client/style.css', to: './' }],
     }),
   ],
   devServer: {
-    publicPath: '/',
-    proxy: {
-      '/checklist': { target: 'https://localhost:3000' },
-      '/task': { target: 'https://localhost:3000' },
-    },
     hot: true,
+    port: 8080,
+    publicPath: '/',
+    compress: true,
+    proxy: {
+      '/checklist': 'http://localhost:3000',
+      '/task': 'http://localhost:3000',
+      // '/checklist': { target: 'https://localhost:3000' },
+      // '/task': { target: 'https://localhost:3000' },
+    },
+
+    //proxy is not set up properly to reload auto
+    //set the port to 8080
   },
 };

@@ -29,7 +29,7 @@ app.use(express.static(path.resolve(__dirname, './../build')));
 
 //get, post request from checklist URL
 app.get('/checklist', checklistController.getChecklist, (req, res) => {
-  console.log('In server.js app.get', res.locals.allChecklists);
+  //console.log('In server.js app.get', res.locals.allChecklists);
   return res.status(200).json(res.locals.allChecklists);
 });
 

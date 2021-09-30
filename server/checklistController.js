@@ -27,8 +27,7 @@ checklistController.addChecklist = async (req, res, next) => {
   //console.log('In addChecklist controller');
   const { title } = req.body;
 
-  // const allResults = await Checklist.find({});
-  // console.log({ allResults });
+  console.log({ title });
 
   try {
     const result = await Checklist.create({ title: title });
