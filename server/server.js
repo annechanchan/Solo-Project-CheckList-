@@ -16,35 +16,41 @@ app.use(express.urlencoded({ extended: false })); //handle parsing url
 // }
 
 //get requests from root URL
+/*
 app.get('/', (req, res) => {
   console.log('In app.get serving html file');
   return res
     .status(200)
     .sendFile(path.resolve(__dirname, '../client/index.html'));
 });
+*/
+
+app.use(express.static(path.resolve(__dirname, './../build')));
 
 //get, post request from checklist URL
 app.get('/checklist', checklistController.getChecklist, (req, res) => {
   console.log('In server.js app.get', res.locals.allChecklists);
-  return res.status(200).json(res.locals.allChecklists); //may have to change this back to json
+  return res.status(200).json(res.locals.allChecklists);
 });
 
 app.post('/checklist', checklistController.addChecklist, (req, res) => {
-  console.log('In server.js post checklist request', req.body);
+  //console.log('In server.js post checklist request', req.body);
   return res.status(200).json({});
 });
 
 app.post('/task', checklistController.addTask, (req, res) => {
   ///if they have tried to add a task, but no checklist then we need to respond back
-  console.log('In server.js post task request', req.body);
+  //console.log('In server.js post task request', req.body);
   return res.status(200).json({});
 });
 
 app.delete('/task', checklistController.removeTask, (req, res) => {
   ///if they have tried to add a task, but no checklist then we need to respond back
-  console.log('In server.js delete request', req.body);
+  //console.log('In server.js delete request', req.body);
   return res.status(200).json({});
 });
+
+//app.put(update)
 
 //Route error handler
 app.use((req, res) => {

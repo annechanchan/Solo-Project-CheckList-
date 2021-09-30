@@ -1,20 +1,19 @@
 //instead of rendering put a <p> Hello World <p>
 
 import React, { Component } from 'react';
+import ChecklistContainer from './ChecklistContainer';
 //import { Switch, Route } from 'react-router-dom';
-
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
     return (
       <div>
-        <div>Test</div>
-        <p>Sup</p>
+        <h1>Checklist App</h1>
+        <ChecklistContainer />
       </div>
     );
   }

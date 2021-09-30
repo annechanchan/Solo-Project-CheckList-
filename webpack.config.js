@@ -1,9 +1,11 @@
 const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './client/index.js',
   output: {
-    path: path.join(__dirname, '/build'),
+    path: path.resolve(__dirname, './build'),
     filename: 'bundle.js',
   },
   mode: process.env.Node_ENV,
@@ -11,7 +13,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -27,13 +29,23 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './client/index.html',
+      filename: './index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "./client/style.css", to: "./" },
+      ],
+    }),
+  ],
   devServer: {
-    hot: true,
-    publicPath: '/build',
-    compress: true,
-    port: 8080,
+    publicPath: '/',
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/checklist': { target: 'https://localhost:3000' },
+      '/task': { target: 'https://localhost:3000' },
     },
+    hot: true,
   },
 };

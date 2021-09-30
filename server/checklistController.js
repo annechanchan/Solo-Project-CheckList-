@@ -1,4 +1,4 @@
-const { Checklist } = require('../Model/model');
+const { Checklist } = require('./Model/model');
 //console.log(path.resolve(__dirname, '../Model/model'));
 const path = require('path');
 const { info } = require('console');
@@ -7,7 +7,7 @@ const checklistController = {};
 
 //controller to get Checklist
 checklistController.getChecklist = async (req, res, next) => {
-  console.log('In getCheckList controller');
+  //console.log('In getCheckList controller');
   try {
     const result = await Checklist.find({}); //this is a promise
     res.locals.allChecklists = result; //we need to wait for the result to come back
@@ -54,7 +54,7 @@ checklistController.addTask = async (req, res, next) => {
 
     return next();
   } catch (err) {
-  //  console.log('Error: In addTask middleware', err);
+    //  console.log('Error: In addTask middleware', err);
     return next({
       log: 'Express error handler caught in addTask middleware',
       message: { err: 'Error in addTask' },
@@ -67,14 +67,14 @@ checklistController.removeTask = async (req, res, next) => {
   const { title, items } = req.body;
   //console.log(req.body)
   //console.log({items})
-  const [task] = items
+  const [task] = items;
   //console.log({task})
   try {
-  //  console.log('in try')
-    await Checklist.updateOne({ title: title }, { $pull: {items: task}})
-    return next()
+    //  console.log('in try')
+    await Checklist.updateOne({ title: title }, { $pull: { items: task } });
+    return next();
   } catch (err) {
-  //  console.log('Error: In removeTask middleware', err);
+    //  console.log('Error: In removeTask middleware', err);
     return next({
       log: 'Express error handler caught in removeTask middleware',
       message: { err: 'Error in removeTask' },
@@ -83,8 +83,6 @@ checklistController.removeTask = async (req, res, next) => {
 };
 
 //controller to update a task to Checklist
-
-
 
 /* ------------------------------- */
 module.exports = checklistController;
