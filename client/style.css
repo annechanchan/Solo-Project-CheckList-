@@ -2,6 +2,13 @@ body {
   background-color: lightblue;
 }
 
-ChecklistBox {
+checklistBox {
   border: 1px black;
+}
+
+button,
+p {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px 0;
 }

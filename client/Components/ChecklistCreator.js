@@ -8,7 +8,7 @@ class ChecklistCreator extends Component {
 
   async createList() {
     let inputTitle = await document.getElementById('inputTitle').value;
-    console.log({ inputTitle });
+    //console.log({ inputTitle });
     await fetch('/checklist', {
       method: 'POST',
       headers: { 'Content-Type': 'Application/JSON' },

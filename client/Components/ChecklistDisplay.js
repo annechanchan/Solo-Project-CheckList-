@@ -15,14 +15,14 @@ class ChecklistDisplay extends Component {
       .then((data) => {
         //console.log('data', data);
         this.setState({ checklists: data });
-        console.log('state', this.state);
+        //console.log('state', this.state);
       })
       .catch((err) => console.log({ err }));
   }
 
   render() {
     let checklistArr = this.state.checklists.map((el) => {
-      return <ChecklistBox key={el['_id']} checklist={el} />; //need return statement when levearging curly braces
+      return <ChecklistBox key={el['_id']} checklist={el} />; //need return statement when levearging curly braces //passing checklist as props to the next component ChecklistBox
     })
     //why did does this work outside of return
 
